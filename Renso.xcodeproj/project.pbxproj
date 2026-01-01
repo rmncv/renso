@@ -6,214 +6,656 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0035AB0096BECC3B4FC45295 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F619EA5653BDDECD92CAE4 /* CurrencyConverter.swift */; };
+		01EC8B823B24685C897B4F02 /* TransferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA75B66F85B4941FA024483A /* TransferViewModel.swift */; };
+		078FD10BD52421F261928622 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23308B4EAFDEEC0D5AF0ABCB /* Transaction.swift */; };
+		09CC1FD21D48F361752E7DD1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E6896E856905CC653CEA61 /* Category.swift */; };
+		127DF28FF5629E5147EBE276 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5E8041857E03EDB93A4FE50 /* Assets.xcassets */; };
+		175C6DD8FCB102D6CDC8A16D /* RulesEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C5AEEB0AB1138A5E943B2 /* RulesEngine.swift */; };
+		189CD920E6AC42B94318CD42 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6A4918B61A9B8227F04603 /* NavigationRouter.swift */; };
+		19BC52CA458B5CA07E45DD3C /* TuistAssets+Renso.swift in Sources */ = {isa = PBXBuildFile; fileRef = C538A4ADD58A74CE6316FC55 /* TuistAssets+Renso.swift */; };
+		217D167A412D3D53C7816B71 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5CDF239E6CFD423BEE48A /* SettingsViewModel.swift */; };
+		237C67912162369974006C47 /* SubCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE835D3002B836C85597075 /* SubCategory.swift */; };
+		23DF7F1C47B4D09EA4BD5CAE /* RensoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11259CCD90879801C953F5DA /* RensoTests.swift */; };
+		32B946B563D10B5E6E3AD5D3 /* NetWorthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C8E30AE6D8C3E454F22233 /* NetWorthService.swift */; };
+		331A1928AE92B5B660A55A9E /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47CBE328A668D42F61237AC /* Rule.swift */; };
+		337774556DE0B1A366755D4D /* ISO4217.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28373F504B95EF3E5E73A13F /* ISO4217.swift */; };
+		36705AD30CECA961BAF67ED6 /* Decimal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AAD7995C860BBEC8FEC109 /* Decimal+Extensions.swift */; };
+		3ADC14A1327881E32595093C /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74830C89FED8C0DF17F042D /* DashboardViewModel.swift */; };
+		3BA63F997772C41D8B80CE9E /* RulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2895C4521917482FD9A83C8 /* RulesViewModel.swift */; };
+		4195B10CEEDF8D86594241D5 /* CategoryIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0995B0E43154B38780AFF69 /* CategoryIconView.swift */; };
+		5405B1FAE7AF1EFB9C5A75E1 /* CryptoTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D47648CB5BC9A46C4909834 /* CryptoTransaction.swift */; };
+		590E2E5256D106AFAACC7369 /* MonobankSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA28756BDFBBA65C3EAB7D5 /* MonobankSyncService.swift */; };
+		59155E484AF838C8E0F0F88D /* TuistBundle+Renso.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E6B2E340D4A75A0D1C0CFE /* TuistBundle+Renso.swift */; };
+		5A4333F2BD4F4C89311BCDAA /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96501A528D9F9E667CD76CCA /* Color+Hex.swift */; };
+		6065FCA8BA01CC4398415E2C /* NetWorthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E100F893622B6821CC35A /* NetWorthCard.swift */; };
+		6250F5AB53D2E84205B7552C /* InvestmentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C39EF3919F5C04C53554FAF /* InvestmentsViewModel.swift */; };
+		62BAB8C4BA082156B1839999 /* CryptoHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237A423052CE759F23DD49A8 /* CryptoHolding.swift */; };
+		660F111D12A40C8EE1B7A5C5 /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D850DEF0424DA608DC64B4FC /* AnalyticsViewModel.swift */; };
+		66306AE314CF251B63C20CD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7E0C821AE2B962CD5D491 /* ContentView.swift */; };
+		68D6E6329A5BEF37408BBB7F /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54D5364910CD98E0FA8D124 /* CategoriesViewModel.swift */; };
+		6DC7B5C05864267A32EACD54 /* ModelContainerSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD884D7A5C4755E8B4FB11B4 /* ModelContainerSetup.swift */; };
+		6E5D37288F78DB0682657787 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB081BF689688D2E64C146 /* LoadingView.swift */; };
+		7349983C45482C82A2D64AB0 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471549E5C34EB0E20FC8A94 /* CardView.swift */; };
+		7406AFC222B56CFE660A4C69 /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0CE301408728CC89F28466 /* Transfer.swift */; };
+		7A064C809A371699ABE16712 /* InvestmentsOverviewCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650AE57071D0BEFA24C53A19 /* InvestmentsOverviewCard.swift */; };
+		8097FFEA2DED2D337EF50A2B /* StockHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812EAE62C20D24B68A535B26 /* StockHolding.swift */; };
+		824EC14367000AF0DABD3476 /* DataSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FA94332F9E4334CC1F7242 /* DataSeeder.swift */; };
+		89FEBE4A37CF5DA22BC44A7D /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F46F3CF0F5DB89FF572B97 /* Formatters.swift */; };
+		95B72A029364EC49DA40E63A /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7991A549566F3AFFE7F13D /* UserSettings.swift */; };
+		99B6F558594C94D3114E844C /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC68F2E2323E71A488564F4 /* TransactionsViewModel.swift */; };
+		9CF553C96404FF324B51C93D /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD541134256D0BA2EA793F /* Wallet.swift */; };
+		9E5B13CE1F4F3DEA3B584993 /* WalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EC24859FCF0EFDC74F9B01 /* WalletsViewModel.swift */; };
+		A752A8D780CB07854F55A4A3 /* RecentTransactionsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196AA48FEFA1877CE0C3AA34 /* RecentTransactionsSection.swift */; };
+		AA653AD768ED4CEEA5849CCC /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA618E962090D4CD45AB434C /* Date+Extensions.swift */; };
+		AD6562F14DE6D571058CCB9A /* RensoTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E20C11D8BBE26B1E555FF072 /* RensoTests-Info.plist */; };
+		BBC1A774F06DB6528D00BCDC /* TransactionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E25CC55C2E439B0ECDEF /* TransactionsListView.swift */; };
+		BEA1BC9A0588C776ABE3DEDC /* ExchangeRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F9928F42C05496933D120D /* ExchangeRate.swift */; };
+		C65DB189DCFB516A02D71F23 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065EAB4A3EB876130EF8BEAA /* AnalyticsService.swift */; };
+		C8DE0191C516AD398B433630 /* RensoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC319B01FBD859EFC12E04 /* RensoApp.swift */; };
+		CA224A5A72C2E36E70B26742 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CE60F303954FF08685E9E1 /* KeychainService.swift */; };
+		CA6D144D1AC1B1DF71700B71 /* MonobankAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2AB676141335D90E21AD55 /* MonobankAPIClient.swift */; };
+		D092E976E5E614B1A595A7CE /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1618BE03FAC54DD70B6D900 /* AnalyticsView.swift */; };
+		D0EDD5CD48CCF61D429F9ECA /* StockTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1F096ADF69D901685718D7 /* StockTransaction.swift */; };
+		DC64D7DB953BFDED756A40E1 /* PriceFetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78159BF4F6F78C7CC62F597 /* PriceFetchService.swift */; };
+		E92291D948711703D44DAD3E /* CoinMarketCapAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EE7292EDC495588887D33C /* CoinMarketCapAPIClient.swift */; };
+		F12488762AE00ECEEDEA06D7 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9D3816DEEF86E205C15BB /* EmptyStateView.swift */; };
+		F145D564E3DBD10B60A85EE8 /* YahooFinanceAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D07D0FEBEFA3EC0BFD2B469 /* YahooFinanceAPIClient.swift */; };
+		F19919BBFA63AE9B5388434F /* Renso.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = ED085B86E9678D7A1063E27B /* Renso.xcworkspace */; };
+		F3DB841971D0B5C7D4AB05CC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF882761EBE4BAD6923BD889 /* SettingsView.swift */; };
+		F670F52645A7D6BEF3E044EC /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146CB2F5B93DBA8A53A70D1 /* DashboardView.swift */; };
+		F859EB9E9E977DFA6DA77E64 /* Renso-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0022E4C13C177F0C40F530C /* Renso-Info.plist */; };
+		FAA188654EB761AC83AE103C /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = 4A106AAED54C9E4404A1BB7F /* PostHog */; };
+		FDC3CA1EA187BEB36A9778FE /* AmountText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A91A6542DD54A3C75899DB /* AmountText.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD10C1FA3037190C8759D2C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4E46D17BD7F18E3A656944A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA28B0D2119BB6048BB00143;
+			remoteInfo = Renso;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		439AD0882F056E7100A5AE98 /* Renso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Renso.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00C8E30AE6D8C3E454F22233 /* NetWorthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorthService.swift; sourceTree = "<group>"; };
+		02594D1D82BBBAA98A0990DD /* RensoTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RensoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		065EAB4A3EB876130EF8BEAA /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		09B9D3816DEEF86E205C15BB /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		0AE9E25CC55C2E439B0ECDEF /* TransactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListView.swift; sourceTree = "<group>"; };
+		0FE835D3002B836C85597075 /* SubCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategory.swift; sourceTree = "<group>"; };
+		11259CCD90879801C953F5DA /* RensoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RensoTests.swift; sourceTree = "<group>"; };
+		14635F5EF91757FAF5D5C20E /* Renso.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Renso.entitlements; sourceTree = "<group>"; };
+		196AA48FEFA1877CE0C3AA34 /* RecentTransactionsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTransactionsSection.swift; sourceTree = "<group>"; };
+		2146CB2F5B93DBA8A53A70D1 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		23308B4EAFDEEC0D5AF0ABCB /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		237A423052CE759F23DD49A8 /* CryptoHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoHolding.swift; sourceTree = "<group>"; };
+		28373F504B95EF3E5E73A13F /* ISO4217.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISO4217.swift; sourceTree = "<group>"; };
+		2CA28756BDFBBA65C3EAB7D5 /* MonobankSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonobankSyncService.swift; sourceTree = "<group>"; };
+		39AAD7995C860BBEC8FEC109 /* Decimal+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extensions.swift"; sourceTree = "<group>"; };
+		3C1F096ADF69D901685718D7 /* StockTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTransaction.swift; sourceTree = "<group>"; };
+		3C39EF3919F5C04C53554FAF /* InvestmentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentsViewModel.swift; sourceTree = "<group>"; };
+		4427A05888FCCB1F1D4BA998 /* .gitignore */ = {isa = PBXFileReference; path = .gitignore; sourceTree = "<group>"; };
+		4D07D0FEBEFA3EC0BFD2B469 /* YahooFinanceAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooFinanceAPIClient.swift; sourceTree = "<group>"; };
+		57A5CDF239E6CFD423BEE48A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		5D47648CB5BC9A46C4909834 /* CryptoTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTransaction.swift; sourceTree = "<group>"; };
+		5EC68F2E2323E71A488564F4 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
+		62F619EA5653BDDECD92CAE4 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
+		650AE57071D0BEFA24C53A19 /* InvestmentsOverviewCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentsOverviewCard.swift; sourceTree = "<group>"; };
+		69EE7292EDC495588887D33C /* CoinMarketCapAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketCapAPIClient.swift; sourceTree = "<group>"; };
+		69F46F3CF0F5DB89FF572B97 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		6D2AB676141335D90E21AD55 /* MonobankAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonobankAPIClient.swift; sourceTree = "<group>"; };
+		75F9928F42C05496933D120D /* ExchangeRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRate.swift; sourceTree = "<group>"; };
+		7E6A4918B61A9B8227F04603 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
+		7F9C5AEEB0AB1138A5E943B2 /* RulesEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesEngine.swift; sourceTree = "<group>"; };
+		812EAE62C20D24B68A535B26 /* StockHolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockHolding.swift; sourceTree = "<group>"; };
+		8471549E5C34EB0E20FC8A94 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		867E100F893622B6821CC35A /* NetWorthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorthCard.swift; sourceTree = "<group>"; };
+		89FA94332F9E4334CC1F7242 /* DataSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSeeder.swift; sourceTree = "<group>"; };
+		92E6896E856905CC653CEA61 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		96501A528D9F9E667CD76CCA /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		98A91A6542DD54A3C75899DB /* AmountText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountText.swift; sourceTree = "<group>"; };
+		A0022E4C13C177F0C40F530C /* Renso-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Renso-Info.plist"; sourceTree = "<group>"; };
+		A1618BE03FAC54DD70B6D900 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
+		AF0CE301408728CC89F28466 /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
+		B5E8041857E03EDB93A4FE50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C538A4ADD58A74CE6316FC55 /* TuistAssets+Renso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+Renso.swift"; sourceTree = "<group>"; };
+		CA618E962090D4CD45AB434C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		D0995B0E43154B38780AFF69 /* CategoryIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryIconView.swift; sourceTree = "<group>"; };
+		D5EC319B01FBD859EFC12E04 /* RensoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RensoApp.swift; sourceTree = "<group>"; };
+		D850DEF0424DA608DC64B4FC /* AnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewModel.swift; sourceTree = "<group>"; };
+		DD884D7A5C4755E8B4FB11B4 /* ModelContainerSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainerSetup.swift; sourceTree = "<group>"; };
+		E20C11D8BBE26B1E555FF072 /* RensoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "RensoTests-Info.plist"; sourceTree = "<group>"; };
+		E2895C4521917482FD9A83C8 /* RulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewModel.swift; sourceTree = "<group>"; };
+		E47CBE328A668D42F61237AC /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		E4EC24859FCF0EFDC74F9B01 /* WalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsViewModel.swift; sourceTree = "<group>"; };
+		E78159BF4F6F78C7CC62F597 /* PriceFetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFetchService.swift; sourceTree = "<group>"; };
+		E7E6B2E340D4A75A0D1C0CFE /* TuistBundle+Renso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+Renso.swift"; sourceTree = "<group>"; };
+		E8CE60F303954FF08685E9E1 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		EA75B66F85B4941FA024483A /* TransferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewModel.swift; sourceTree = "<group>"; };
+		ED085B86E9678D7A1063E27B /* Renso.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = Renso.xcworkspace; sourceTree = "<group>"; };
+		EDDDD2EEF97BD0140580F789 /* Renso.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Renso.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE7991A549566F3AFFE7F13D /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		F2B7E0C821AE2B962CD5D491 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F54D5364910CD98E0FA8D124 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
+		F74830C89FED8C0DF17F042D /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		F9042AA321D6E2519515F1B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FEBD541134256D0BA2EA793F /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		FEDB081BF689688D2E64C146 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		FF882761EBE4BAD6923BD889 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		439AD0952F056E7100A5AE98 /* Exceptions for "Renso" folder in "Renso" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 439AD0872F056E7100A5AE98 /* Renso */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		439AD08A2F056E7100A5AE98 /* Renso */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				439AD0952F056E7100A5AE98 /* Exceptions for "Renso" folder in "Renso" target */,
-			);
-			path = Renso;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
-		439AD0852F056E7100A5AE98 /* Frameworks */ = {
+		5794AF10899AFA616148FF46 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA188654EB761AC83AE103C /* PostHog in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		439AD07F2F056E7100A5AE98 = {
+		11E38AD913CB781EB3637AD1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				439AD08A2F056E7100A5AE98 /* Renso */,
-				439AD0892F056E7100A5AE98 /* Products */,
+				B5E8041857E03EDB93A4FE50 /* Assets.xcassets */,
+				F9042AA321D6E2519515F1B2 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		23B5E5B3D3A5E77C162C900B /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				7E6A4918B61A9B8227F04603 /* NavigationRouter.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		2D3EB21DB4CF2BFB0F826910 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				708B2B1F8592E9488296AADA /* Extensions */,
+				69F46F3CF0F5DB89FF572B97 /* Formatters.swift */,
+				28373F504B95EF3E5E73A13F /* ISO4217.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		344D50C560ED7535F83DF050 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				A1618BE03FAC54DD70B6D900 /* AnalyticsView.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		38DD41AEFAA750005E39947B /* Investments */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Investments;
+			sourceTree = "<group>";
+		};
+		4DE95D32D6382F7549B50C6A /* Wallets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Wallets;
+			sourceTree = "<group>";
+		};
+		60A06CBE03D9AD0D97469BB8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FF882761EBE4BAD6923BD889 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		6EE54C8E3FEE40394A22F630 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D850DEF0424DA608DC64B4FC /* AnalyticsViewModel.swift */,
+				F54D5364910CD98E0FA8D124 /* CategoriesViewModel.swift */,
+				F74830C89FED8C0DF17F042D /* DashboardViewModel.swift */,
+				3C39EF3919F5C04C53554FAF /* InvestmentsViewModel.swift */,
+				E2895C4521917482FD9A83C8 /* RulesViewModel.swift */,
+				57A5CDF239E6CFD423BEE48A /* SettingsViewModel.swift */,
+				5EC68F2E2323E71A488564F4 /* TransactionsViewModel.swift */,
+				EA75B66F85B4941FA024483A /* TransferViewModel.swift */,
+				E4EC24859FCF0EFDC74F9B01 /* WalletsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		708B2B1F8592E9488296AADA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				96501A528D9F9E667CD76CCA /* Color+Hex.swift */,
+				CA618E962090D4CD45AB434C /* Date+Extensions.swift */,
+				39AAD7995C860BBEC8FEC109 /* Decimal+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7215B61716ABE97D20461644 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E2FFB1A69C08F87D7346B0D7 /* Analytics */,
+				E98363E60C3A11A62C217C03 /* API */,
+				62F619EA5653BDDECD92CAE4 /* CurrencyConverter.swift */,
+				89FA94332F9E4334CC1F7242 /* DataSeeder.swift */,
+				E8CE60F303954FF08685E9E1 /* KeychainService.swift */,
+				2CA28756BDFBBA65C3EAB7D5 /* MonobankSyncService.swift */,
+				00C8E30AE6D8C3E454F22233 /* NetWorthService.swift */,
+				E78159BF4F6F78C7CC62F597 /* PriceFetchService.swift */,
+				7F9C5AEEB0AB1138A5E943B2 /* RulesEngine.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7249BB5B0A323E4DDAD6DE10 = {
+			isa = PBXGroup;
+			children = (
+				AF5F1A66484C25AEB18415E8 /* Renso */,
+				F7651AFA7178F3FCE6926A27 /* RensoTests */,
+				F593E85E790A9BE65AE54A8F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		439AD0892F056E7100A5AE98 /* Products */ = {
+		8106B29F381D9C7A25EA0B19 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				439AD0882F056E7100A5AE98 /* Renso.app */,
+				F2B7E0C821AE2B962CD5D491 /* ContentView.swift */,
+				D5EC319B01FBD859EFC12E04 /* RensoApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		898BFA86E1BAA1E2EEC8C241 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				2146CB2F5B93DBA8A53A70D1 /* DashboardView.swift */,
+				650AE57071D0BEFA24C53A19 /* InvestmentsOverviewCard.swift */,
+				867E100F893622B6821CC35A /* NetWorthCard.swift */,
+				196AA48FEFA1877CE0C3AA34 /* RecentTransactionsSection.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		8FF797C318EEA63F777FE128 /* InfoPlists */ = {
+			isa = PBXGroup;
+			children = (
+				A0022E4C13C177F0C40F530C /* Renso-Info.plist */,
+				E20C11D8BBE26B1E555FF072 /* RensoTests-Info.plist */,
+			);
+			path = InfoPlists;
+			sourceTree = "<group>";
+		};
+		93707A5F3EA46E0B6F67F9F1 /* Derived */ = {
+			isa = PBXGroup;
+			children = (
+				8FF797C318EEA63F777FE128 /* InfoPlists */,
+				B76F0C35880BF5638060F955 /* Sources */,
+			);
+			path = Derived;
+			sourceTree = "<group>";
+		};
+		AF5F1A66484C25AEB18415E8 /* Renso */ = {
+			isa = PBXGroup;
+			children = (
+				8106B29F381D9C7A25EA0B19 /* App */,
+				93707A5F3EA46E0B6F67F9F1 /* Derived */,
+				B27B9513B0688F8FAEA63912 /* Models */,
+				23B5E5B3D3A5E77C162C900B /* Navigation */,
+				11E38AD913CB781EB3637AD1 /* Resources */,
+				7215B61716ABE97D20461644 /* Services */,
+				2D3EB21DB4CF2BFB0F826910 /* Utilities */,
+				6EE54C8E3FEE40394A22F630 /* ViewModels */,
+				F53B12A530F8515739796A66 /* Views */,
+				4427A05888FCCB1F1D4BA998 /* .gitignore */,
+				14635F5EF91757FAF5D5C20E /* Renso.entitlements */,
+				ED085B86E9678D7A1063E27B /* Renso.xcworkspace */,
+			);
+			path = Renso;
+			sourceTree = "<group>";
+		};
+		B27B9513B0688F8FAEA63912 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				92E6896E856905CC653CEA61 /* Category.swift */,
+				237A423052CE759F23DD49A8 /* CryptoHolding.swift */,
+				5D47648CB5BC9A46C4909834 /* CryptoTransaction.swift */,
+				75F9928F42C05496933D120D /* ExchangeRate.swift */,
+				DD884D7A5C4755E8B4FB11B4 /* ModelContainerSetup.swift */,
+				E47CBE328A668D42F61237AC /* Rule.swift */,
+				812EAE62C20D24B68A535B26 /* StockHolding.swift */,
+				3C1F096ADF69D901685718D7 /* StockTransaction.swift */,
+				0FE835D3002B836C85597075 /* SubCategory.swift */,
+				23308B4EAFDEEC0D5AF0ABCB /* Transaction.swift */,
+				AF0CE301408728CC89F28466 /* Transfer.swift */,
+				EE7991A549566F3AFFE7F13D /* UserSettings.swift */,
+				FEBD541134256D0BA2EA793F /* Wallet.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B76F0C35880BF5638060F955 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C538A4ADD58A74CE6316FC55 /* TuistAssets+Renso.swift */,
+				E7E6B2E340D4A75A0D1C0CFE /* TuistBundle+Renso.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		E2FFB1A69C08F87D7346B0D7 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				065EAB4A3EB876130EF8BEAA /* AnalyticsService.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		E94BEAA2DE324DE3BA8A6E54 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				0AE9E25CC55C2E439B0ECDEF /* TransactionsListView.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		E98363E60C3A11A62C217C03 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				69EE7292EDC495588887D33C /* CoinMarketCapAPIClient.swift */,
+				6D2AB676141335D90E21AD55 /* MonobankAPIClient.swift */,
+				4D07D0FEBEFA3EC0BFD2B469 /* YahooFinanceAPIClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		EA0AE87E147B5EB8A05506D5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				98A91A6542DD54A3C75899DB /* AmountText.swift */,
+				8471549E5C34EB0E20FC8A94 /* CardView.swift */,
+				D0995B0E43154B38780AFF69 /* CategoryIconView.swift */,
+				09B9D3816DEEF86E205C15BB /* EmptyStateView.swift */,
+				FEDB081BF689688D2E64C146 /* LoadingView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F53B12A530F8515739796A66 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				344D50C560ED7535F83DF050 /* Analytics */,
+				EA0AE87E147B5EB8A05506D5 /* Components */,
+				898BFA86E1BAA1E2EEC8C241 /* Dashboard */,
+				38DD41AEFAA750005E39947B /* Investments */,
+				60A06CBE03D9AD0D97469BB8 /* Settings */,
+				E94BEAA2DE324DE3BA8A6E54 /* Transactions */,
+				4DE95D32D6382F7549B50C6A /* Wallets */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F593E85E790A9BE65AE54A8F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDDDD2EEF97BD0140580F789 /* Renso.app */,
+				02594D1D82BBBAA98A0990DD /* RensoTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F7651AFA7178F3FCE6926A27 /* RensoTests */ = {
+			isa = PBXGroup;
+			children = (
+				11259CCD90879801C953F5DA /* RensoTests.swift */,
+			);
+			path = RensoTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		439AD0872F056E7100A5AE98 /* Renso */ = {
+		8B1DD4A358155B565CE73C7E /* RensoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 439AD0962F056E7100A5AE98 /* Build configuration list for PBXNativeTarget "Renso" */;
+			buildConfigurationList = DB00893D84A0C49D77A2245B /* Build configuration list for PBXNativeTarget "RensoTests" */;
 			buildPhases = (
-				439AD0842F056E7100A5AE98 /* Sources */,
-				439AD0852F056E7100A5AE98 /* Frameworks */,
-				439AD0862F056E7100A5AE98 /* Resources */,
+				147FA7AFB7DA1819A851921C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				010F34667FB5B5CFC919856A /* PBXTargetDependency */,
+			);
+			name = RensoTests;
+			packageProductDependencies = (
+			);
+			productName = RensoTests;
+			productReference = 02594D1D82BBBAA98A0990DD /* RensoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FA28B0D2119BB6048BB00143 /* Renso */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66676C51D51C5D6A6DF40B24 /* Build configuration list for PBXNativeTarget "Renso" */;
+			buildPhases = (
+				A50243873029894A14F6654C /* Sources */,
+				9272A10D043D67917E9B9F65 /* Resources */,
+				5794AF10899AFA616148FF46 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				439AD08A2F056E7100A5AE98 /* Renso */,
-			);
 			name = Renso;
 			packageProductDependencies = (
+				4A106AAED54C9E4404A1BB7F /* PostHog */,
 			);
 			productName = Renso;
-			productReference = 439AD0882F056E7100A5AE98 /* Renso.app */;
+			productReference = EDDDD2EEF97BD0140580F789 /* Renso.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		439AD0802F056E7100A5AE98 /* Project object */ = {
+		F4E46D17BD7F18E3A656944A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2620;
-				LastUpgradeCheck = 2620;
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					439AD0872F056E7100A5AE98 = {
-						CreatedOnToolsVersion = 26.2;
+					FA28B0D2119BB6048BB00143 = {
+						DevelopmentTeam = LJ82247D69;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 439AD0832F056E7100A5AE98 /* Build configuration list for PBXProject "Renso" */;
+			buildConfigurationList = D11DA7F87E91F1FBC0A562D4 /* Build configuration list for PBXProject "Renso" */;
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
-			mainGroup = 439AD07F2F056E7100A5AE98;
+			mainGroup = 7249BB5B0A323E4DDAD6DE10;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				33B810115BD84FBB92BE8641 /* XCRemoteSwiftPackageReference "posthog-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 439AD0892F056E7100A5AE98 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				439AD0872F056E7100A5AE98 /* Renso */,
+				FA28B0D2119BB6048BB00143 /* Renso */,
+				8B1DD4A358155B565CE73C7E /* RensoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		439AD0862F056E7100A5AE98 /* Resources */ = {
+		9272A10D043D67917E9B9F65 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				127DF28FF5629E5147EBE276 /* Assets.xcassets in Resources */,
+				F859EB9E9E977DFA6DA77E64 /* Renso-Info.plist in Resources */,
+				F19919BBFA63AE9B5388434F /* Renso.xcworkspace in Resources */,
+				AD6562F14DE6D571058CCB9A /* RensoTests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		439AD0842F056E7100A5AE98 /* Sources */ = {
+		147FA7AFB7DA1819A851921C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DF7F1C47B4D09EA4BD5CAE /* RensoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A50243873029894A14F6654C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDC3CA1EA187BEB36A9778FE /* AmountText.swift in Sources */,
+				C65DB189DCFB516A02D71F23 /* AnalyticsService.swift in Sources */,
+				D092E976E5E614B1A595A7CE /* AnalyticsView.swift in Sources */,
+				660F111D12A40C8EE1B7A5C5 /* AnalyticsViewModel.swift in Sources */,
+				7349983C45482C82A2D64AB0 /* CardView.swift in Sources */,
+				68D6E6329A5BEF37408BBB7F /* CategoriesViewModel.swift in Sources */,
+				09CC1FD21D48F361752E7DD1 /* Category.swift in Sources */,
+				4195B10CEEDF8D86594241D5 /* CategoryIconView.swift in Sources */,
+				E92291D948711703D44DAD3E /* CoinMarketCapAPIClient.swift in Sources */,
+				5A4333F2BD4F4C89311BCDAA /* Color+Hex.swift in Sources */,
+				66306AE314CF251B63C20CD9 /* ContentView.swift in Sources */,
+				62BAB8C4BA082156B1839999 /* CryptoHolding.swift in Sources */,
+				5405B1FAE7AF1EFB9C5A75E1 /* CryptoTransaction.swift in Sources */,
+				0035AB0096BECC3B4FC45295 /* CurrencyConverter.swift in Sources */,
+				F670F52645A7D6BEF3E044EC /* DashboardView.swift in Sources */,
+				3ADC14A1327881E32595093C /* DashboardViewModel.swift in Sources */,
+				824EC14367000AF0DABD3476 /* DataSeeder.swift in Sources */,
+				AA653AD768ED4CEEA5849CCC /* Date+Extensions.swift in Sources */,
+				36705AD30CECA961BAF67ED6 /* Decimal+Extensions.swift in Sources */,
+				F12488762AE00ECEEDEA06D7 /* EmptyStateView.swift in Sources */,
+				BEA1BC9A0588C776ABE3DEDC /* ExchangeRate.swift in Sources */,
+				89FEBE4A37CF5DA22BC44A7D /* Formatters.swift in Sources */,
+				337774556DE0B1A366755D4D /* ISO4217.swift in Sources */,
+				7A064C809A371699ABE16712 /* InvestmentsOverviewCard.swift in Sources */,
+				6250F5AB53D2E84205B7552C /* InvestmentsViewModel.swift in Sources */,
+				CA224A5A72C2E36E70B26742 /* KeychainService.swift in Sources */,
+				6E5D37288F78DB0682657787 /* LoadingView.swift in Sources */,
+				6DC7B5C05864267A32EACD54 /* ModelContainerSetup.swift in Sources */,
+				CA6D144D1AC1B1DF71700B71 /* MonobankAPIClient.swift in Sources */,
+				590E2E5256D106AFAACC7369 /* MonobankSyncService.swift in Sources */,
+				189CD920E6AC42B94318CD42 /* NavigationRouter.swift in Sources */,
+				6065FCA8BA01CC4398415E2C /* NetWorthCard.swift in Sources */,
+				32B946B563D10B5E6E3AD5D3 /* NetWorthService.swift in Sources */,
+				DC64D7DB953BFDED756A40E1 /* PriceFetchService.swift in Sources */,
+				A752A8D780CB07854F55A4A3 /* RecentTransactionsSection.swift in Sources */,
+				C8DE0191C516AD398B433630 /* RensoApp.swift in Sources */,
+				331A1928AE92B5B660A55A9E /* Rule.swift in Sources */,
+				175C6DD8FCB102D6CDC8A16D /* RulesEngine.swift in Sources */,
+				3BA63F997772C41D8B80CE9E /* RulesViewModel.swift in Sources */,
+				F3DB841971D0B5C7D4AB05CC /* SettingsView.swift in Sources */,
+				217D167A412D3D53C7816B71 /* SettingsViewModel.swift in Sources */,
+				8097FFEA2DED2D337EF50A2B /* StockHolding.swift in Sources */,
+				D0EDD5CD48CCF61D429F9ECA /* StockTransaction.swift in Sources */,
+				237C67912162369974006C47 /* SubCategory.swift in Sources */,
+				078FD10BD52421F261928622 /* Transaction.swift in Sources */,
+				BBC1A774F06DB6528D00BCDC /* TransactionsListView.swift in Sources */,
+				99B6F558594C94D3114E844C /* TransactionsViewModel.swift in Sources */,
+				7406AFC222B56CFE660A4C69 /* Transfer.swift in Sources */,
+				01EC8B823B24685C897B4F02 /* TransferViewModel.swift in Sources */,
+				19BC52CA458B5CA07E45DD3C /* TuistAssets+Renso.swift in Sources */,
+				59155E484AF838C8E0F0F88D /* TuistBundle+Renso.swift in Sources */,
+				95B72A029364EC49DA40E63A /* UserSettings.swift in Sources */,
+				9CF553C96404FF324B51C93D /* Wallet.swift in Sources */,
+				9E5B13CE1F4F3DEA3B584993 /* WalletsViewModel.swift in Sources */,
+				F145D564E3DBD10B60A85EE8 /* YahooFinanceAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin XCBuildConfiguration section */
-		439AD0972F056E7100A5AE98 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Renso/Renso.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LJ82247D69;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Renso/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.denysrumiantsev.Renso;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
+/* Begin PBXTargetDependency section */
+		010F34667FB5B5CFC919856A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA28B0D2119BB6048BB00143 /* Renso */;
+			targetProxy = CD10C1FA3037190C8759D2C5 /* PBXContainerItemProxy */;
 		};
-		439AD0982F056E7100A5AE98 /* Release */ = {
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1375EECFCFC96D9427221AD5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Renso/Renso.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LJ82247D69;
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Renso/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_FILE = Renso/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Renso;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.denysrumiantsev.Renso;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				PRODUCT_NAME = Renso;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		439AD0992F056E7100A5AE98 /* Debug */ = {
+		13D07E1FB2FC9D4DBE5989FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Renso/Renso.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LJ82247D69;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Renso/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Renso;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.denysrumiantsev.Renso;
+				PRODUCT_NAME = Renso;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA0CD45633512B4C606160F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -241,17 +683,16 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = LJ82247D69;
+				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
 					"$(inherited)",
+					"DEBUG=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -259,25 +700,65 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		439AD09A2F056E7100A5AE98 /* Release */ = {
+		B1F58F453D431FE13C6F1D76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.denysrumiantsev.RensoTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Renso.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Renso";
+			};
+			name = Release;
+		};
+		B86DB9C743143E51A435A571 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.denysrumiantsev.RensoTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Renso.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Renso";
+			};
+			name = Debug;
+		};
+		DAFB1B691843A011DB643A43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -305,11 +786,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = LJ82247D69;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -317,38 +797,74 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_UPCOMING_FEATURE_EXISTENTIAL_ANY = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		439AD0832F056E7100A5AE98 /* Build configuration list for PBXProject "Renso" */ = {
+		66676C51D51C5D6A6DF40B24 /* Build configuration list for PBXNativeTarget "Renso" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				439AD0992F056E7100A5AE98 /* Debug */,
-				439AD09A2F056E7100A5AE98 /* Release */,
+				13D07E1FB2FC9D4DBE5989FB /* Debug */,
+				1375EECFCFC96D9427221AD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		439AD0962F056E7100A5AE98 /* Build configuration list for PBXNativeTarget "Renso" */ = {
+		D11DA7F87E91F1FBC0A562D4 /* Build configuration list for PBXProject "Renso" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				439AD0972F056E7100A5AE98 /* Debug */,
-				439AD0982F056E7100A5AE98 /* Release */,
+				AA0CD45633512B4C606160F6 /* Debug */,
+				DAFB1B691843A011DB643A43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
+		};
+		DB00893D84A0C49D77A2245B /* Build configuration list for PBXNativeTarget "RensoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B86DB9C743143E51A435A571 /* Debug */,
+				B1F58F453D431FE13C6F1D76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		33B810115BD84FBB92BE8641 /* XCRemoteSwiftPackageReference "posthog-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PostHog/posthog-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A106AAED54C9E4404A1BB7F /* PostHog */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33B810115BD84FBB92BE8641 /* XCRemoteSwiftPackageReference "posthog-ios" */;
+			productName = PostHog;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 439AD0802F056E7100A5AE98 /* Project object */;
+	rootObject = F4E46D17BD7F18E3A656944A /* Project object */;
 }
