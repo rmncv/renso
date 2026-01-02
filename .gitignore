@@ -1,0 +1,54 @@
+# Xcode
+#
+# gitignore contributors: remember to update Global Business Gitignore
+# https://github.com/github/gitignore/blob/main/Global/Business.gitignore
+
+## User settings
+xcuserdata/
+
+## Xcode build files
+DerivedData/
+build/
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+## Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.resolved
+
+## CocoaPods
+Pods/
+Podfile.lock
+
+## Carthage
+Carthage/Build
+
+## Tuist
+.tuist-bin/
+Tuist/Dependencies/
+
+## Secrets - DO NOT COMMIT
+Renso/Services/Secrets.swift
+
+## Environment files
+.env
+.env.*
+*.xcconfig
+
+## macOS
+.DS_Store
+*.swp
+*~
+
+## IDE
+.idea/
+*.xccheckout
+

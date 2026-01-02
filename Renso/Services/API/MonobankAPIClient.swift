@@ -96,9 +96,8 @@ final class MonobankAPIClient {
     private let session: URLSession
     private var token: String?
 
-    // Rate limiting: Monobank allows 1 request per 60 seconds for personal API
-    private var lastRequestTime: Date?
-    private let minimumRequestInterval: TimeInterval = 60
+    // Note: Rate limiting is now handled by SyncQueueService
+    // which queues requests with 60-second delays between them
 
     init(token: String? = nil) {
         let config = URLSessionConfiguration.default
@@ -110,22 +109,6 @@ final class MonobankAPIClient {
 
     func setToken(_ token: String) {
         self.token = token
-    }
-
-    // MARK: - Rate Limiting
-
-    private func checkRateLimit() throws {
-        guard let lastRequest = lastRequestTime else {
-            lastRequestTime = Date()
-            return
-        }
-
-        let timeSinceLastRequest = Date().timeIntervalSince(lastRequest)
-        if timeSinceLastRequest < minimumRequestInterval {
-            throw MonobankAPIError.rateLimitExceeded
-        }
-
-        lastRequestTime = Date()
     }
 
     // MARK: - Request Builder
@@ -151,13 +134,8 @@ final class MonobankAPIClient {
 
     private func performRequest<T: Decodable>(
         endpoint: String,
-        requiresAuth: Bool = true,
-        checkRate: Bool = true
+        requiresAuth: Bool = true
     ) async throws -> T {
-        if checkRate {
-            try checkRateLimit()
-        }
-
         let request = try buildRequest(endpoint: endpoint, requiresAuth: requiresAuth)
 
         let (data, response) = try await session.data(for: request)
@@ -211,21 +189,18 @@ final class MonobankAPIClient {
     }
 
     /// Get currency exchange rates (public endpoint, no auth required)
-    /// No rate limit
+    /// No rate limit for this endpoint
     func getCurrencyRates() async throws -> [MonobankCurrencyRate] {
         return try await performRequest(
             endpoint: "/bank/currency",
-            requiresAuth: false,
-            checkRate: false
+            requiresAuth: false
         )
     }
 
     /// Set webhook URL
     /// - Parameter webhookUrl: URL to receive transaction notifications
-    /// Rate limit: 1 request per 60 seconds
+    /// Note: Rate limiting handled by SyncQueueService
     func setWebhook(url: String) async throws {
-        try checkRateLimit()
-
         var request = try buildRequest(endpoint: "/personal/webhook")
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

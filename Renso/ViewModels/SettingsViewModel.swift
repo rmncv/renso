@@ -1,23 +1,33 @@
 import Foundation
 import SwiftData
+import Combine
+import os.log
+
+private let logger = Logger(subsystem: "com.denysrumiantsev.Renso", category: "Settings")
 
 @MainActor
 @Observable
 final class SettingsViewModel {
     private let modelContext: ModelContext
     private let syncService: MonobankSyncService
+    private let syncQueueService: SyncQueueService
     private let keychain: KeychainService
     private let analytics: AnalyticsService
+    private var cancellables = Set<AnyCancellable>()
 
     // State
     var settings: UserSettings?
     var isLoading = false
     var isSyncing = false
+    var isValidating = false
     var errorMessage: String?
     var successMessage: String?
 
     // Monobank
     var hasMonobankToken = false
+    var isMonobankConnected = false
+    var monobankClientName: String?
+    var monobankAccountsCount: Int = 0
     var lastSyncDate: Date?
 
     // Currency
@@ -26,11 +36,54 @@ final class SettingsViewModel {
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
         self.syncService = MonobankSyncService(modelContext: modelContext)
+        self.syncQueueService = SyncQueueService.shared
         self.keychain = KeychainService.shared
         self.analytics = AnalyticsService.shared
+        
+        // Configure sync queue service
+        syncQueueService.configure(modelContext: modelContext)
+        
+        // Observe sync status
+        observeSyncStatus()
 
         loadSettings()
         checkMonobankToken()
+    }
+    
+    private func observeSyncStatus() {
+        syncQueueService.$status
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] status in
+                guard let self = self else { return }
+                
+                switch status {
+                case .completed(let accounts, let transactions):
+                    self.isSyncing = false
+                    self.successMessage = "Synced \(transactions) transactions from \(accounts) accounts"
+                    self.lastSyncDate = Date()
+                    self.loadSettings()
+                    logger.info("✅ Sync completed via queue")
+                    
+                case .failed(let error):
+                    self.isSyncing = false
+                    self.errorMessage = "Sync failed: \(error)"
+                    logger.error("❌ Sync failed: \(error)")
+                    
+                case .syncing, .waitingForRateLimit:
+                    self.isSyncing = true
+                    
+                case .idle:
+                    break
+                }
+            }
+            .store(in: &cancellables)
+        
+        syncQueueService.$isProcessing
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isProcessing in
+                self?.isSyncing = isProcessing
+            }
+            .store(in: &cancellables)
     }
 
     // MARK: - Data Loading
@@ -66,34 +119,37 @@ final class SettingsViewModel {
     // MARK: - Monobank
 
     func checkMonobankToken() {
-        hasMonobankToken = keychain.exists(for: .monobankToken)
-
-        if let token = keychain.monobankToken {
-            syncService.setToken(token)
+        // Check if token is configured in Secrets
+        hasMonobankToken = syncService.hasToken
+    }
+    
+    /// Validates the Monobank connection by fetching client info
+    func validateMonobankConnection() async {
+        guard hasMonobankToken else {
+            errorMessage = "Monobank token not configured"
+            isMonobankConnected = false
+            return
         }
-    }
-
-    func saveMonobankToken(_ token: String) {
-        keychain.monobankToken = token
-        syncService.setToken(token)
-        checkMonobankToken()
-
-        settings?.hasMonobankToken = true
-        try? modelContext.save()
-
-        successMessage = "Monobank token saved successfully"
-        analytics.track(.monobankTokenConfigured)
-    }
-
-    func removeMonobankToken() {
-        keychain.monobankToken = nil
-        checkMonobankToken()
-
-        settings?.hasMonobankToken = false
-        settings?.lastMonobankSync = nil
-        try? modelContext.save()
-
-        successMessage = "Monobank token removed"
+        
+        isValidating = true
+        errorMessage = nil
+        
+        do {
+            let clientInfo = try await syncService.validateToken()
+            isMonobankConnected = true
+            monobankClientName = clientInfo.name
+            monobankAccountsCount = clientInfo.accounts.count
+            
+            settings?.hasMonobankToken = true
+            try? modelContext.save()
+        } catch {
+            isMonobankConnected = false
+            monobankClientName = nil
+            monobankAccountsCount = 0
+            errorMessage = "Connection failed: \(error.localizedDescription)"
+        }
+        
+        isValidating = false
     }
 
     func syncWithMonobank() async {
@@ -102,32 +158,17 @@ final class SettingsViewModel {
             return
         }
 
+        logger.info("🔄 Manual sync triggered from Settings")
         isSyncing = true
         errorMessage = nil
         successMessage = nil
 
         analytics.track(.monobankSyncStarted)
-        let startTime = Date()
-
-        do {
-            let result = try await syncService.performFullSync()
-
-            let duration = Date().timeIntervalSince(startTime)
-            lastSyncDate = Date()
-
-            successMessage = "Synced \(result.transactionsCount) transactions from \(result.accountsCount) accounts"
-
-            analytics.trackSyncCompleted(
-                transactionsCount: result.transactionsCount,
-                duration: duration
-            )
-        } catch {
-            errorMessage = "Sync failed: \(error.localizedDescription)"
-            analytics.trackSyncFailed(error: error.localizedDescription)
-        }
-
-        isSyncing = false
-        loadSettings()
+        
+        // Use queue service with full account refresh for manual sync
+        syncQueueService.enqueueFullSyncWithAccountRefresh()
+        
+        // The sync status will be updated via the observer
     }
 
     // MARK: - Currency

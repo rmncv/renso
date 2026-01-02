@@ -6,6 +6,7 @@ enum MonobankSyncError: LocalizedError {
     case apiError(Error)
     case noAccounts
     case invalidData
+    case walletNotFound
 
     var errorDescription: String? {
         switch self {
@@ -17,6 +18,8 @@ enum MonobankSyncError: LocalizedError {
             return "No accounts found"
         case .invalidData:
             return "Invalid data received from Monobank"
+        case .walletNotFound:
+            return "Wallet not found for account"
         }
     }
 }
@@ -27,16 +30,47 @@ final class MonobankSyncService {
     private let apiClient: MonobankAPIClient
     private let rulesEngine: RulesEngine
     private let converter: CurrencyConverter
+    
+    /// Cached client info after successful validation
+    private(set) var clientInfo: MonobankClientInfo?
 
-    init(modelContext: ModelContext, token: String? = "u1wWQSCeThK6aC8ZNrFIjgNbwAb78gFj2PYhI_7e5f2I") {
+    init(modelContext: ModelContext, token: String? = nil) {
         self.modelContext = modelContext
-        self.apiClient = MonobankAPIClient(token: token)
+        // Use provided token, or fall back to Secrets configuration
+        let effectiveToken = token ?? Secrets.monobankToken
+        self.apiClient = MonobankAPIClient(token: effectiveToken)
         self.rulesEngine = RulesEngine(modelContext: modelContext)
         self.converter = CurrencyConverter(modelContext: modelContext)
     }
 
     func setToken(_ token: String) {
         apiClient.setToken(token)
+    }
+    
+    // MARK: - Token Validation
+    
+    /// Validates the configured token by fetching client info
+    /// Returns the client info if successful, throws on failure
+    @discardableResult
+    func validateToken() async throws -> MonobankClientInfo {
+        let info = try await apiClient.getClientInfo()
+        self.clientInfo = info
+        return info
+    }
+    
+    /// Check if the token is configured
+    var hasToken: Bool {
+        !Secrets.monobankToken.isEmpty
+    }
+    
+    /// Get client name if available
+    var clientName: String? {
+        clientInfo?.name
+    }
+    
+    /// Get number of accounts
+    var accountsCount: Int {
+        clientInfo?.accounts.count ?? 0
     }
 
     // MARK: - Full Sync
@@ -145,11 +179,13 @@ final class MonobankSyncService {
             }
 
             let balance = ISO4217.fromMinorUnits(account.balance, currencyCode: currencyCode)
+            let walletName = generateWalletName(account: account, currencyCode: currencyCode)
 
             wallet = Wallet(
-                name: account.iban ?? "Monobank \(account.type)",
+                name: walletName,
                 currencyCode: currencyCode,
-                initialBalance: balance
+                initialBalance: balance,
+                walletType: .bankAccount
             )
 
             wallet.monobankAccountId = account.id
@@ -165,6 +201,88 @@ final class MonobankSyncService {
         wallet.lastSyncDate = Date()
 
         return wallet
+    }
+    
+    /// Generate a user-friendly wallet name from Monobank account info
+    /// Format: "Monobank {CardType} {Currency}" e.g. "Monobank Black UAH"
+    private func generateWalletName(account: MonobankAccount, currencyCode: String) -> String {
+        let cardType = formatCardType(account.type)
+        return "Monobank \(cardType) \(currencyCode)"
+    }
+    
+    /// Format card type to proper case
+    private func formatCardType(_ type: String) -> String {
+        let typeMapping: [String: String] = [
+            "black": "Black",
+            "white": "White",
+            "platinum": "Platinum",
+            "iron": "Iron",
+            "fop": "FOP",
+            "yellow": "Yellow",
+            "eAid": "eAid",
+            "rebuilding": "Rebuilding"
+        ]
+        return typeMapping[type.lowercased()] ?? type.capitalized
+    }
+
+    // MARK: - Queue-Based Sync Methods
+    
+    /// Sync accounts from already-fetched client info (used by SyncQueueService)
+    func syncAccountsFromClientInfo(_ clientInfo: MonobankClientInfo) async throws -> [Wallet] {
+        self.clientInfo = clientInfo
+        
+        var syncedWallets: [Wallet] = []
+        
+        for account in clientInfo.accounts {
+            let wallet = try await syncAccount(account)
+            syncedWallets.append(wallet)
+        }
+        
+        try modelContext.save()
+        
+        return syncedWallets
+    }
+    
+    /// Sync transactions for a specific account by ID (used by SyncQueueService)
+    func syncTransactionsForAccount(accountId: String, daysBack: Int = 30) async throws -> Int {
+        // Find the wallet for this account
+        let descriptor = FetchDescriptor<Wallet>()
+        let allWallets = try modelContext.fetch(descriptor)
+        
+        guard let wallet = allWallets.first(where: { $0.monobankAccountId == accountId }) else {
+            throw MonobankSyncError.walletNotFound
+        }
+        
+        let to = Int64(Date().timeIntervalSince1970)
+        let from = to - Int64(daysBack * 24 * 60 * 60)
+        
+        let statements = try await apiClient.getStatement(
+            accountId: accountId,
+            from: from,
+            to: to
+        )
+        
+        var newTransactionsCount = 0
+        
+        for statement in statements {
+            if try await createOrUpdateTransaction(from: statement, wallet: wallet) {
+                newTransactionsCount += 1
+            }
+        }
+        
+        try modelContext.save()
+        
+        // Apply rules to new transactions
+        if newTransactionsCount > 0 {
+            let allTransactions = try modelContext.fetch(FetchDescriptor<Transaction>())
+            let uncategorized = allTransactions.filter { $0.wallet?.id == wallet.id && $0.category == nil }
+            rulesEngine.applyRules(to: uncategorized)
+        }
+        
+        // Update last sync time
+        updateLastSyncTime()
+        
+        return newTransactionsCount
     }
 
     // MARK: - Sync Transactions
@@ -242,6 +360,7 @@ final class MonobankSyncService {
         transaction.cashbackAmount = ISO4217.fromMinorUnits(statement.cashbackAmount, currencyCode: wallet.currencyCode)
         transaction.commissionAmount = ISO4217.fromMinorUnits(statement.commissionRate, currencyCode: wallet.currencyCode)
         transaction.balanceAfter = ISO4217.fromMinorUnits(statement.balance, currencyCode: wallet.currencyCode)
+        transaction.isFromBank = true  // Mark as bank transaction (read-only)
 
         modelContext.insert(transaction)
 

@@ -4,6 +4,7 @@ import SwiftData
 struct RecentTransactionsSection: View {
     let transactions: [Transaction]
     let isLoading: Bool
+    var onTransactionTap: ((Transaction) -> Void)?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -36,6 +37,10 @@ struct RecentTransactionsSection: View {
                 VStack(spacing: 0) {
                     ForEach(transactions.prefix(5)) { transaction in
                         TransactionRow(transaction: transaction)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                onTransactionTap?(transaction)
+                            }
 
                         if transaction.id != transactions.prefix(5).last?.id {
                             Divider()

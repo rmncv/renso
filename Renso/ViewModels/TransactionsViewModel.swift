@@ -25,9 +25,13 @@ final class TransactionsViewModel {
     // Filters
     var selectedFilters: [TransactionFilter] = [.all]
     var searchText = ""
+    var showOnlyUncategorized = false
 
     // Sort
     var sortDescending = true
+    
+    // Uncategorized count for current month (cached)
+    var uncategorizedCountThisMonth: Int = 0
 
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
@@ -35,6 +39,7 @@ final class TransactionsViewModel {
         self.analytics = AnalyticsService.shared
 
         loadTransactions()
+        loadUncategorizedCount()
     }
 
     // MARK: - Data Loading
@@ -79,8 +84,21 @@ final class TransactionsViewModel {
                     transaction.transactionDescription.localizedStandardContains(searchText)
                 }
             }
+            
+            // Apply uncategorized filter for current month
+            if showOnlyUncategorized {
+                let (startOfMonth, endOfMonth) = currentMonthDateRange()
+                allTransactions = allTransactions.filter { transaction in
+                    transaction.category == nil &&
+                    transaction.date >= startOfMonth &&
+                    transaction.date <= endOfMonth
+                }
+            }
 
             transactions = allTransactions
+            
+            // Also update uncategorized count
+            loadUncategorizedCount()
         } catch {
             errorMessage = "Failed to load transactions: \(error.localizedDescription)"
         }
@@ -273,5 +291,43 @@ final class TransactionsViewModel {
     func groupedByCategory() -> [Category: [Transaction]] {
         let categorized = transactions.filter { $0.category != nil }
         return Dictionary(grouping: categorized) { $0.category! }
+    }
+    
+    // MARK: - Uncategorized Transactions
+    
+    private func currentMonthDateRange() -> (start: Date, end: Date) {
+        let calendar = Calendar.current
+        let now = Date()
+        let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: now)) ?? now
+        let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, second: -1), to: startOfMonth) ?? now
+        return (startOfMonth, endOfMonth)
+    }
+    
+    func loadUncategorizedCount() {
+        let (startOfMonth, endOfMonth) = currentMonthDateRange()
+        
+        let descriptor = FetchDescriptor<Transaction>()
+        
+        do {
+            let allTransactions = try modelContext.fetch(descriptor)
+            uncategorizedCountThisMonth = allTransactions.filter { transaction in
+                transaction.category == nil &&
+                transaction.date >= startOfMonth &&
+                transaction.date <= endOfMonth
+            }.count
+        } catch {
+            // Silently fail, count will remain 0
+        }
+    }
+    
+    func showUncategorizedTransactions() {
+        showOnlyUncategorized = true
+        loadTransactions()
+        analytics.track(.filterApplied)
+    }
+    
+    func hideUncategorizedFilter() {
+        showOnlyUncategorized = false
+        loadTransactions()
     }
 }

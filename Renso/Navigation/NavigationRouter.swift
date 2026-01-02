@@ -30,6 +30,9 @@ enum Tab: String, CaseIterable, Identifiable {
 @Observable
 final class NavigationRouter {
     var selectedTab: Tab = .dashboard
+    
+    // Flag to show uncategorized transactions when switching to transactions tab
+    var showUncategorizedTransactions = false
 
     // Navigation paths for each tab
     var dashboardPath = NavigationPath()
@@ -69,6 +72,11 @@ final class NavigationRouter {
         case .settings:
             if !settingsPath.isEmpty { settingsPath.removeLast() }
         }
+    }
+    
+    func navigateToUncategorizedTransactions() {
+        showUncategorizedTransactions = true
+        selectedTab = .transactions
     }
 }
 

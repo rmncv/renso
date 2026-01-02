@@ -3,12 +3,44 @@ import SwiftData
 
 struct TransactionsListView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(NavigationRouter.self) private var router
     @State private var viewModel: TransactionsViewModel?
+    @State private var showAddTransaction = false
+    @State private var selectedTransaction: Transaction?
 
     var body: some View {
         NavigationStack {
             if let viewModel = viewModel {
                 VStack(spacing: 0) {
+                    // Uncategorized transactions banner
+                    if viewModel.uncategorizedCountThisMonth > 0 && !viewModel.showOnlyUncategorized {
+                        UncategorizedTransactionsCard(count: viewModel.uncategorizedCountThisMonth) {
+                            viewModel.showUncategorizedTransactions()
+                        }
+                        .padding(.horizontal)
+                        .padding(.top, 8)
+                    }
+                    
+                    // Active filter indicator
+                    if viewModel.showOnlyUncategorized {
+                        HStack {
+                            Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                                .foregroundStyle(.orange)
+                            Text("Showing uncategorized transactions this month")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                            Spacer()
+                            Button("Clear") {
+                                viewModel.hideUncategorizedFilter()
+                            }
+                            .font(.caption)
+                            .fontWeight(.medium)
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
+                        .background(Color.orange.opacity(0.1))
+                    }
+                    
                     // Search bar
                     SearchBar(text: Binding(
                         get: { viewModel.searchText },
@@ -33,6 +65,10 @@ struct TransactionsListView: View {
                         List {
                             ForEach(viewModel.transactions) { transaction in
                                 TransactionListRow(transaction: transaction)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        selectedTransaction = transaction
+                                    }
                             }
                         }
                         .listStyle(.plain)
@@ -42,7 +78,7 @@ struct TransactionsListView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
-                            // TODO: Show add transaction sheet
+                            showAddTransaction = true
                         } label: {
                             Image(systemName: "plus")
                         }
@@ -56,6 +92,18 @@ struct TransactionsListView: View {
                         }
                     }
                 }
+                .sheet(isPresented: $showAddTransaction) {
+                    TransactionFormView(transaction: nil)
+                        .onDisappear {
+                            viewModel.loadTransactions()
+                        }
+                }
+                .sheet(item: $selectedTransaction) { transaction in
+                    TransactionFormView(transaction: transaction)
+                        .onDisappear {
+                            viewModel.loadTransactions()
+                        }
+                }
             } else {
                 ProgressView()
             }
@@ -63,6 +111,18 @@ struct TransactionsListView: View {
         .onAppear {
             if viewModel == nil {
                 viewModel = TransactionsViewModel(modelContext: modelContext)
+            }
+            
+            // Check if we should show uncategorized transactions (navigated from Dashboard)
+            if router.showUncategorizedTransactions {
+                viewModel?.showUncategorizedTransactions()
+                router.showUncategorizedTransactions = false
+            }
+        }
+        .onChange(of: router.showUncategorizedTransactions) { _, newValue in
+            if newValue, let viewModel = viewModel {
+                viewModel.showUncategorizedTransactions()
+                router.showUncategorizedTransactions = false
             }
         }
     }

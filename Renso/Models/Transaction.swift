@@ -18,6 +18,10 @@ final class Transaction {
     var balanceAfter: Decimal?
     var createdAt: Date = Date()
     var updatedAt: Date = Date()
+    
+    /// Indicates this transaction was synced from a bank (Monobank)
+    /// Bank transactions cannot be edited or deleted by the user
+    var isFromBank: Bool = false
 
     // Relationships
     var wallet: Wallet?
@@ -42,6 +46,11 @@ final class Transaction {
 
     var absoluteAmount: Decimal {
         abs(amount)
+    }
+    
+    /// Bank transactions cannot be edited or deleted
+    var isEditable: Bool {
+        !isFromBank
     }
 
     init(

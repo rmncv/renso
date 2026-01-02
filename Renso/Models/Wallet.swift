@@ -1,6 +1,34 @@
 import Foundation
 import SwiftData
 
+enum WalletType: String, Codable, CaseIterable {
+    case bankAccount = "bank_account"
+    case cash
+    case stocks
+    case crypto
+    case other
+
+    var displayName: String {
+        switch self {
+        case .bankAccount: return "Bank Account"
+        case .cash: return "Cash"
+        case .stocks: return "Stocks"
+        case .crypto: return "Crypto"
+        case .other: return "Other"
+        }
+    }
+
+    var defaultIcon: String {
+        switch self {
+        case .bankAccount: return "building.columns"
+        case .cash: return "banknote"
+        case .stocks: return "chart.line.uptrend.xyaxis"
+        case .crypto: return "bitcoinsign.circle"
+        case .other: return "wallet.pass"
+        }
+    }
+}
+
 @Model
 final class Wallet {
     var id: UUID = UUID()
@@ -14,6 +42,13 @@ final class Wallet {
     var sortOrder: Int = 0
     var createdAt: Date = Date()
     var updatedAt: Date = Date()
+
+    // Wallet type with raw value storage for SwiftData compatibility
+    private var walletTypeRaw: String = WalletType.other.rawValue
+    var walletType: WalletType {
+        get { WalletType(rawValue: walletTypeRaw) ?? .other }
+        set { walletTypeRaw = newValue.rawValue }
+    }
 
     // Monobank integration
     var monobankAccountId: String?
@@ -35,7 +70,8 @@ final class Wallet {
         name: String,
         currencyCode: String = "UAH",
         initialBalance: Decimal = 0,
-        iconName: String = "wallet.pass",
+        walletType: WalletType = .other,
+        iconName: String? = nil,
         colorHex: String = "#007AFF"
     ) {
         self.id = UUID()
@@ -43,7 +79,8 @@ final class Wallet {
         self.currencyCode = currencyCode
         self.initialBalance = initialBalance
         self.currentBalance = initialBalance
-        self.iconName = iconName
+        self.walletType = walletType
+        self.iconName = iconName ?? walletType.defaultIcon
         self.colorHex = colorHex
         self.createdAt = Date()
         self.updatedAt = Date()
@@ -51,5 +88,10 @@ final class Wallet {
 
     var isMonobankLinked: Bool {
         monobankAccountId != nil
+    }
+
+    /// Display name for UI (e.g., "monobank black UAH")
+    var displayName: String {
+        "\(name) \(currencyCode)"
     }
 }
